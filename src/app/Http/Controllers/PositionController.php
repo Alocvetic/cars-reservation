@@ -34,7 +34,7 @@ class PositionController extends Controller
         $dto = $request->toDto();
         $id = $this->repository->create($dto);
 
-        return ResponseApi::json(['id' => $id], message: 'Водитель успешно добавлен');
+        return ResponseApi::json(['id' => $id], message: 'Должность успешно добавлена');
     }
 
     public function update(UpdatePositionRequest $request, int $id): JsonResponse
@@ -46,7 +46,7 @@ class PositionController extends Controller
         $dto = $request->toDto();
         $id = $this->repository->update($id, $dto);
 
-        return ResponseApi::json(['id' => $id], message: 'Данные водителя успешно обновлены');
+        return ResponseApi::json(['id' => $id], message: 'Данные должности успешно обновлены');
     }
 
     public function delete(int $id): JsonResponse
@@ -57,6 +57,6 @@ class PositionController extends Controller
 
         $this->repository->delete($id);
 
-        return ResponseApi::json(message: 'Водитель успешно удален');
+        return ResponseApi::json(message: 'Должность успешно удалена');
     }
 }
