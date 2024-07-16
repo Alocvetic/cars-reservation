@@ -31,10 +31,10 @@ class CreatePositionRequest extends FormRequest
 
     public function toDto(): CreatePositionDTO
     {
-        $this->validated();
+        $result = $this->validated();
 
         $dto = new CreatePositionDTO();
-        $dto->setTitle('title');
+        $dto->setTitle($result['title']);
 
         return $dto;
     }
