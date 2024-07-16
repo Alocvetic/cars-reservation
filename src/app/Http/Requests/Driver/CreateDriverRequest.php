@@ -31,10 +31,10 @@ class CreateDriverRequest extends FormRequest
 
     public function toDto(): CreateDriverDTO
     {
-        $this->validated();
+        $result = $this->validated();
 
         $dto = new CreateDriverDTO();
-        $dto->setTitle('title');
+        $dto->setTitle($result['title']);
 
         return $dto;
     }

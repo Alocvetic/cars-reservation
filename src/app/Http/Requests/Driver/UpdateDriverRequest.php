@@ -31,10 +31,10 @@ class UpdateDriverRequest extends FormRequest
 
     public function toDto(): UpdateDriverDTO
     {
-        $this->validated();
+        $result = $this->validated();
 
         $dto = new UpdateDriverDTO();
-        $dto->setTitle('title');
+        $dto->setTitle($result['title']);
 
         return $dto;
     }
