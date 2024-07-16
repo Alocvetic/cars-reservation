@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Position\CreatePositionRequest;
-use App\Http\Requests\Position\UpdatePositionRequest;
+use App\Http\Requests\Position\{CreatePositionRequest, UpdatePositionRequest};
 use App\Repositories\PositionRepository;
 use App\Services\ResponseApi;
 use Illuminate\Http\JsonResponse;

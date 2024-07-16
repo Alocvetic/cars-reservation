@@ -4,6 +4,7 @@ namespace App\Http\Requests\Position;
 
 use App\DTO\Position\CreatePositionDTO;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreatePositionRequest extends FormRequest
 {
@@ -15,7 +16,7 @@ class CreatePositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'min:2', 'max:255'],
+            'title' => ['required', 'string', 'min:2', 'max:255', Rule::unique('positions', 'title')],
         ];
     }
 
@@ -26,6 +27,7 @@ class CreatePositionRequest extends FormRequest
             'title.string' => 'Должна быть строка',
             'title.min' => 'Длина не менее :min символов',
             'title.max' => 'Длина не более :min символов',
+            'title.unique' => 'Значение уже существует',
         ];
     }
 
