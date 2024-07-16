@@ -41,10 +41,10 @@ class UpdateComfortCarRequest extends FormRequest
 
     public function toDto(): UpdateComfortCarDTO
     {
-        $this->validated();
+        $result = $this->validated();
 
         $dto = new UpdateComfortCarDTO();
-        $dto->setTitle('title');
+        $dto->setTitle($result['title']);
 
         return $dto;
     }

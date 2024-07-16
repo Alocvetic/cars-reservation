@@ -12,6 +12,4 @@ class ComfortCarFactory extends Factory
             'title' => fake()->unique()->word(),
         ];
     }
-
-
 }

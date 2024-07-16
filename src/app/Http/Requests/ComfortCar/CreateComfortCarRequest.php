@@ -33,10 +33,10 @@ class CreateComfortCarRequest extends FormRequest
 
     public function toDto(): CreateComfortCarDTO
     {
-        $this->validated();
+        $result = $this->validated();
 
         $dto = new CreateComfortCarDTO();
-        $dto->setTitle('title');
+        $dto->setTitle($result['title']);
 
         return $dto;
     }
