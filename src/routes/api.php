@@ -8,3 +8,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 require_once 'Api/comfortCar.php';
+require_once 'Api/driver.php';
