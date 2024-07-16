@@ -9,7 +9,6 @@ class ComfortCarSeeder extends Seeder
 {
     public function run(): void
     {
-        ComfortCar::factory(4)->create();
+        ComfortCar::factory(ComfortCar::COUNT_FACTORY)->create();
     }
-
 }
