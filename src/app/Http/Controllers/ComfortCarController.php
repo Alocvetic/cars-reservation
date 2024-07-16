@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\{CreateComfortCarRequest, UpdateComfortCarRequest};
+use App\Http\Requests\ComfortCar\{CreateComfortCarRequest, UpdateComfortCarRequest};
 use App\Repositories\ComfortCarRepository;
 use App\Services\ResponseApi;
 use Illuminate\Http\JsonResponse;
@@ -33,7 +33,7 @@ class ComfortCarController extends Controller
         $dto = $request->toDto();
         $id = $this->repository->create($dto);
 
-        return ResponseApi::json(['id' => $id], message: 'Комфорт успешно создан');
+        return ResponseApi::json(['id' => $id], message: 'Комфорт успешно добавлен');
     }
 
     public function update(UpdateComfortCarRequest $request, int $id): JsonResponse
@@ -45,7 +45,7 @@ class ComfortCarController extends Controller
         $dto = $request->toDto();
         $id = $this->repository->update($id, $dto);
 
-        return ResponseApi::json(['id' => $id], message: 'Комфорт успешно обновлен');
+        return ResponseApi::json(['id' => $id], message: 'Данные комфорта успешно обновлены');
     }
 
     public function delete(int $id): JsonResponse

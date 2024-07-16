@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\ComfortCar;
 
-use App\DTO\ComfortCar\CreateComfortCarDTO;
+use App\DTO\ComfortCar\UpdateComfortCarDTO;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateComfortCarRequest extends FormRequest
+class UpdateComfortCarRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,8 +15,16 @@ class CreateComfortCarRequest extends FormRequest
 
     public function rules(): array
     {
+        $id = $this->route('id');
+
         return [
-            'title' => ['required', 'string', 'min:2', 'max:255', Rule::unique('comfort_cars', 'title')],
+            'title' => [
+                'required',
+                'string',
+                'min:2',
+                'max:255',
+                Rule::unique('comfort_cars', 'title')->ignore($id, 'title')
+            ],
         ];
     }
 
@@ -31,11 +39,11 @@ class CreateComfortCarRequest extends FormRequest
         ];
     }
 
-    public function toDto(): CreateComfortCarDTO
+    public function toDto(): UpdateComfortCarDTO
     {
         $this->validated();
 
-        $dto = new CreateComfortCarDTO();
+        $dto = new UpdateComfortCarDTO();
         $dto->setTitle('title');
 
         return $dto;
