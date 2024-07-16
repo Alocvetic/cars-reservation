@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int $id
@@ -13,7 +14,14 @@ class Position extends Model
 {
     use HasFactory;
 
+    public const COUNT_FACTORY = 4;
+
     protected $fillable = [
         'title'
     ];
+
+    public function employees(): BelongsToMany
+    {
+        return $this->belongsToMany(Employee::class);
+    }
 }
