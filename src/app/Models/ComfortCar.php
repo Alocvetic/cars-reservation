@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int $id
@@ -18,4 +19,9 @@ class ComfortCar extends Model
     protected $fillable = [
         'title'
     ];
+
+    public function cars(): BelongsToMany
+    {
+        return $this->belongsToMany(Car::class);
+    }
 }
