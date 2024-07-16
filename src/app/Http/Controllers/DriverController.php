@@ -33,7 +33,7 @@ class DriverController extends Controller
         $dto = $request->toDto();
         $id = $this->repository->create($dto);
 
-        return ResponseApi::json(['id' => $id], message: 'Водитель был добавлен');
+        return ResponseApi::json(['id' => $id], message: 'Водитель успешно добавлен');
     }
 
     public function update(UpdateDriverRequest $request, int $id): JsonResponse
@@ -56,6 +56,6 @@ class DriverController extends Controller
 
         $this->repository->delete($id);
 
-        return ResponseApi::json(message: 'Водител был удален');
+        return ResponseApi::json(message: 'Водитель успешно удален');
     }
 }
