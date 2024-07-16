@@ -21,21 +21,6 @@ class CreateEmployeeRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-            'title.required' => 'Заполните поле',
-            'title.string' => 'Должна быть строка',
-            'title.min' => 'Длина не менее :min символов',
-            'title.max' => 'Длина не более :min символов',
-            'position_id.required' => 'Заполните поле',
-            'position_id.integer' => 'Должно быть целое число',
-            'position_id.min' => 'Длина не менее :min символов',
-            'position_id.max' => 'Длина не более :min символов',
-            'position_id.exists' => 'Выберите существующую должность',
-        ];
-    }
-
     public function toDto(): CreateEmployeeDTO
     {
         $result = $this->validated();

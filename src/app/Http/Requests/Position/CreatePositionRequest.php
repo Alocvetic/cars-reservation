@@ -20,17 +20,6 @@ class CreatePositionRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-            'title.required' => 'Заполните поле',
-            'title.string' => 'Должна быть строка',
-            'title.min' => 'Длина не менее :min символов',
-            'title.max' => 'Длина не более :min символов',
-            'title.unique' => 'Значение уже существует',
-        ];
-    }
-
     public function toDto(): CreatePositionDTO
     {
         $result = $this->validated();

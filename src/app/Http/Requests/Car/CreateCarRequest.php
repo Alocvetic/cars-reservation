@@ -32,24 +32,7 @@ class CreateCarRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'register_number.required' => 'Заполните поле',
-            'register_number.string' => 'Должна быть строка',
             'register_number.regex' => 'Формат номера A999AA',
-            'register_number.unique' => 'Значение уже существует',
-            'model.required' => 'Заполните поле',
-            'model.string' => 'Должна быть строка',
-            'model.min' => 'Длина не менее :min символов',
-            'model.max' => 'Длина не более :min символов',
-            'driver_id.required' => 'Заполните поле',
-            'driver_id.integer' => 'Должно быть целое число',
-            'driver_id.min' => 'Длина не менее :min символов',
-            'driver_id.max' => 'Длина не более :min символов',
-            'driver_id.exists' => 'Выберите существующего водителя',
-            'comfort_car_id.required' => 'Заполните поле',
-            'comfort_car_id.integer' => 'Должно быть целое число',
-            'comfort_car_id.min' => 'Длина не менее :min символов',
-            'comfort_car_id.max' => 'Длина не более :min символов',
-            'comfort_car_id.exists' => 'Выберите существующий комфорт',
             'booking.string' => 'Должна быть строка json|null',
             'booking.nullable' => 'Должна быть строка json|null',
         ];

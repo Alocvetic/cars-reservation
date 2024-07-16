@@ -23,19 +23,8 @@ class UpdateComfortCarRequest extends FormRequest
                 'string',
                 'min:2',
                 'max:255',
-                Rule::unique('comfort_cars', 'title')->ignore($id, 'title')
+                Rule::unique('comfort_cars', 'title')->ignore($id, 'id')
             ],
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'title.required' => 'Заполните поле',
-            'title.string' => 'Должна быть строка',
-            'title.min' => 'Длина не менее :min символов',
-            'title.max' => 'Длина не более :min символов',
-            'title.unique' => 'Значение уже существует',
         ];
     }
 

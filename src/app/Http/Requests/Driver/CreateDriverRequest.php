@@ -19,16 +19,6 @@ class CreateDriverRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-            'title.required' => 'Заполните поле',
-            'title.string' => 'Должна быть строка',
-            'title.min' => 'Длина не менее :min символов',
-            'title.max' => 'Длина не более :min символов',
-        ];
-    }
-
     public function toDto(): CreateDriverDTO
     {
         $result = $this->validated();
