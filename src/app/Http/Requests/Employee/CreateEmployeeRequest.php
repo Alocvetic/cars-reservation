@@ -38,10 +38,11 @@ class CreateEmployeeRequest extends FormRequest
 
     public function toDto(): CreateEmployeeDTO
     {
-        $this->validated();
+        $result = $this->validated();
 
         $dto = new CreateEmployeeDTO();
-        $dto->setTitle('title');
+        $dto->setTitle($result['title']);
+        $dto->setPositionId((int)$result['position_id']);
 
         return $dto;
     }

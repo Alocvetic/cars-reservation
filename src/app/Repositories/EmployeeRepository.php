@@ -87,6 +87,7 @@ class EmployeeRepository
     protected function populate(Employee $employee, EmployeeDTOInterface $dto): Employee
     {
         $employee->title = $dto->getTitle();
+        $employee->position_id = $dto->getPositionId();
 
         return $employee;
     }

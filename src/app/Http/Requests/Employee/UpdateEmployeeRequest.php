@@ -38,10 +38,11 @@ class UpdateEmployeeRequest extends FormRequest
 
     public function toDto(): UpdateEmployeeDTO
     {
-        $this->validated();
+        $result = $this->validated();
 
         $dto = new UpdateEmployeeDTO();
-        $dto->setTitle('title');
+        $dto->setTitle($result['title']);
+        $dto->setPositionId((int)$result['position_id']);
 
         return $dto;
     }
