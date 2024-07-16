@@ -9,7 +9,7 @@ class ComfortCarFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->word(),
+            'title' => fake()->unique()->word(),
         ];
     }
 
