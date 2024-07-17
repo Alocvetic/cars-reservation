@@ -5,19 +5,32 @@ namespace App\Repositories;
 use App\Contracts\BookingDTOInterface;
 use App\DTO\Booking\{CreateBookingDTO, UpdateBookingDTO};
 use App\Exceptions\BookingException;
+use App\Filters\BookingFilter;
+use App\Http\Requests\Booking\GetBookingFilterRequest;
 use App\Models\Booking;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 class BookingRepository
 {
+    public function __construct(
+        protected BookingFilter $filter,
+    ) {
+    }
+
     /**
      * Получение всех записей Booking
      *
+     * @param GetBookingFilterRequest $request
      * @return Collection
      */
-    public function getAll(): Collection
+    public function getAll(GetBookingFilterRequest $request): Collection
     {
+        if (!empty($request->query())) {
+            $query = $this->filter->buildQuery($request);
+            return $query->get();
+        }
+
         return Booking::all();
     }
 

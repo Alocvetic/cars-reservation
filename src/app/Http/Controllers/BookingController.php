@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Booking\{CreateBookingRequest, UpdateBookingRequest};
+use App\Http\Requests\Booking\{CreateBookingRequest, GetBookingFilterRequest, UpdateBookingRequest};
 use App\Repositories\BookingRepository;
 use App\Services\ResponseApi;
 use Illuminate\Http\JsonResponse;
@@ -14,9 +14,9 @@ class BookingController extends Controller
     ) {
     }
 
-    public function index(): JsonResponse
+    public function index(GetBookingFilterRequest $request): JsonResponse
     {
-        $data = $this->repository->getAll();
+        $data = $this->repository->getAll($request);
 
         return ResponseApi::json($data->toArray());
     }
