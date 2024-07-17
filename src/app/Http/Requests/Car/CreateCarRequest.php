@@ -25,7 +25,7 @@ class CreateCarRequest extends FormRequest
             'model' => ['required', 'string', 'min:2', 'max:255'],
             'driver_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('drivers', 'id')],
             'comfort_car_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('comfort_cars', 'id')],
-            'booking' => ['string|nullable'],
+            'is_access' => ['required', 'boolean'],
         ];
     }
 
@@ -33,8 +33,6 @@ class CreateCarRequest extends FormRequest
     {
         return [
             'register_number.regex' => 'Формат номера A999AA',
-            'booking.string' => 'Должна быть строка json|null',
-            'booking.nullable' => 'Должна быть строка json|null',
         ];
     }
 
@@ -47,9 +45,7 @@ class CreateCarRequest extends FormRequest
         $dto->setModel($result['model']);
         $dto->setDriverId((int)$result['driver_id']);
         $dto->setComfortCarId((int)$result['comfort_car_id']);
-        if (isset($result['booking'])) {
-            $dto->setBookingJson($result['booking']);
-        }
+        $dto->setIsAccess((bool)$result['is_access']);
 
         return $dto;
     }

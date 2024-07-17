@@ -88,7 +88,7 @@ class CarRepository
         $car->model = $dto->getModel();
         $car->comfort_car_id = $dto->getComfortCarId();
         $car->driver_id = $dto->getDriverId();
-        $car->booking = $dto->getBookingJson();
+        $car->is_access = $dto->isAccess();
 
         return $car;
     }

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('model');
             $table->foreignIdFor(Driver::class);
             $table->foreignIdFor(ComfortCar::class);
-            $table->json('booking')->nullable();
+            $table->boolean('is_access')->default(true);
+            $table->boolean('is_booked')->default(false);
             $table->timestamps();
 
             $table->index('register_number');

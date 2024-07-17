@@ -10,7 +10,8 @@ class UpdateCarDTO implements CarDTOInterface
     public string $model;
     public int $comfort_car_id;
     public int $driver_id;
-    public ?string $booking_json = null;
+    public bool $is_access = true;
+    public bool $is_booked = false;
 
     public function getRegisterNumber(): string
     {
@@ -52,13 +53,23 @@ class UpdateCarDTO implements CarDTOInterface
         $this->driver_id = $driver_id;
     }
 
-    public function getBookingJson(): ?string
+    public function isAccess(): bool
     {
-        return $this->booking_json;
+        return $this->is_access;
     }
 
-    public function setBookingJson(?string $booking_json): void
+    public function setIsAccess(bool $is_access): void
     {
-        $this->booking_json = $booking_json;
+        $this->is_access = $is_access;
+    }
+
+    public function isBooked(): bool
+    {
+        return $this->is_booked;
+    }
+
+    public function setIsBooked(bool $is_booked): void
+    {
+        $this->is_booked = $is_booked;
     }
 }

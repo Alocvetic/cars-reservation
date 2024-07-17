@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $model
  * @property int $comfort_car_id
  * @property int $driver_id
- * @property string|null $booking
+ * @property bool $is_access
+ * @property bool $is_booked
  */
 class Car extends Model
 {
@@ -25,7 +26,8 @@ class Car extends Model
         'model',
         'comfort_car_id',
         'driver_id',
-        'booking',
+        'is_access',
+        'is_booked',
     ];
 
     public function comfortCar(): HasOne
