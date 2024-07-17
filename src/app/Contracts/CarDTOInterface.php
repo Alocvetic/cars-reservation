@@ -23,8 +23,4 @@ interface CarDTOInterface
     public function isAccess(): bool;
 
     public function setIsAccess(bool $is_access): void;
-
-    public function isBooked(): bool;
-
-    public function setIsBooked(bool $is_booked): void;
 }
