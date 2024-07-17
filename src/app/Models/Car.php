@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
@@ -37,13 +37,13 @@ class Car extends Model
         'is_access',
     ];
 
-    public function comfortCar(): HasOne
+    public function comfortCar(): BelongsTo
     {
-        return $this->hasOne(ComfortCar::class);
+        return $this->belongsTo(ComfortCar::class);
     }
 
-    public function driver(): HasOne
+    public function driver(): BelongsTo
     {
-        return $this->hasOne(Driver::class);
+        return $this->belongsTo(Driver::class);
     }
 }

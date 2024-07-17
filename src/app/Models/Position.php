@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -26,9 +27,9 @@ class Position extends Model
         'title'
     ];
 
-    public function employees(): BelongsToMany
+    public function employees(): HasMany
     {
-        return $this->belongsToMany(Employee::class);
+        return $this->hasMany(Employee::class);
     }
 
     public function comfortCars(): BelongsToMany

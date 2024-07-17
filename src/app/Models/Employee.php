@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
@@ -22,8 +22,8 @@ class Employee extends Model
         'position_id'
     ];
 
-    public function position(): HasOne
+    public function position(): BelongsTo
     {
-        return $this->hasOne(Position::class);
+        return $this->belongsTo(Position::class);
     }
 }
