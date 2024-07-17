@@ -12,3 +12,4 @@ require_once 'Api/driver.php';
 require_once 'Api/position.php';
 require_once 'Api/employee.php';
 require_once 'Api/car.php';
+require_once 'Api/booking.php';
