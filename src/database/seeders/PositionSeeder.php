@@ -19,7 +19,8 @@ class PositionSeeder extends Seeder
 
             $randomComfortCars = CollectionService::getRandom(
                 collection: $comfortCars,
-                count: random_int(1, ComfortCar::DEF_COUNT));
+                count: random_int(1, ComfortCar::DEF_COUNT)
+            );
 
             $position->comfortCars()->sync($randomComfortCars);
         }

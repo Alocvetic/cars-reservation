@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Contracts\ComfortCarDTOInterface;
-use App\Models\{ComfortCar, Employee};
 use App\DTO\ComfortCar\{CreateComfortCarDTO, UpdateComfortCarDTO};
+use App\Models\{ComfortCar};
 use Illuminate\Database\Eloquent\Collection;
 
 class ComfortCarRepository

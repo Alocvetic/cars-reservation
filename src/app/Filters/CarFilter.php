@@ -4,7 +4,7 @@ namespace App\Filters;
 
 use App\Http\Requests\Car\GetCarFilterRequest;
 use App\Models\Car;
-use App\Repositories\ {BookingRepository, ComfortCarRepository};
+use App\Repositories\{BookingRepository, ComfortCarRepository};
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 

@@ -3,10 +3,10 @@
 namespace App\Repositories;
 
 use App\Contracts\BookingDTOInterface;
-use App\Exceptions\BookingException;
-use Carbon\Carbon;
 use App\DTO\Booking\{CreateBookingDTO, UpdateBookingDTO};
+use App\Exceptions\BookingException;
 use App\Models\Booking;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 class BookingRepository
