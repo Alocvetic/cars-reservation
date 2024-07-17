@@ -3,10 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\DriverDTOInterface;
-use App\DTO\Driver\{
-    CreateDriverDTO,
-    UpdateDriverDTO
-};
+use App\DTO\Driver\{CreateDriverDTO, UpdateDriverDTO};
 use App\Models\Driver;
 use Illuminate\Database\Eloquent\Collection;
 

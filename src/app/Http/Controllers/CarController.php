@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Car\{CreateCarRequest, UpdateCarRequest};
+use App\Http\Requests\Car\{CreateCarRequest, GetCarFilterRequest, UpdateCarRequest};
 use App\Repositories\CarRepository;
 use App\Services\ResponseApi;
 use Illuminate\Http\JsonResponse;
@@ -14,9 +14,9 @@ class CarController extends Controller
     ) {
     }
 
-    public function index(): JsonResponse
+    public function index(GetCarFilterRequest $request): JsonResponse
     {
-        $data = $this->repository->getAll();
+        $data = $this->repository->getAll($request);
 
         return ResponseApi::json($data->toArray());
     }

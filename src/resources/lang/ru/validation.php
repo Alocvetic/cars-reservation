@@ -2,6 +2,7 @@
 
 return [
     'required' => 'Поле :attribute обязательно для заполнения.',
+    'required_with' => 'Поле :attribute обязательно для заполнения, когда указан(ы) :values.',
     'boolean' => 'Поле :attribute должно быть истиной или ложью.',
     'integer' => 'Поле :attribute должно быть целым числом.',
     'string' => 'Поле :attribute должно быть строкой.',

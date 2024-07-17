@@ -3,11 +3,8 @@
 namespace App\Repositories;
 
 use App\Contracts\ComfortCarDTOInterface;
-use App\DTO\ComfortCar\{
-    CreateComfortCarDTO,
-    UpdateComfortCarDTO
-};
-use App\Models\ComfortCar;
+use App\Models\{ComfortCar, Employee};
+use App\DTO\ComfortCar\{CreateComfortCarDTO, UpdateComfortCarDTO};
 use Illuminate\Database\Eloquent\Collection;
 
 class ComfortCarRepository
@@ -100,5 +97,18 @@ class ComfortCarRepository
     public function delete(int $id): void
     {
         ComfortCar::where('id', $id)->delete();
+    }
+
+    /**
+     * Получение всех записей ComfortCar по employee_id
+     *
+     * @param int $employee_id
+     * @return Collection
+     */
+    public static function getByEmployeeId(int $employee_id): Collection
+    {
+        $employee = (new EmployeeRepository())->getById($employee_id);
+
+        return $employee->position->comfortCars;
     }
 }

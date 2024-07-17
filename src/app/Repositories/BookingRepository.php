@@ -4,10 +4,10 @@ namespace App\Repositories;
 
 use App\Contracts\BookingDTOInterface;
 use App\Exceptions\BookingException;
+use Carbon\Carbon;
 use App\DTO\Booking\{CreateBookingDTO, UpdateBookingDTO};
 use App\Models\Booking;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 
 class BookingRepository
 {
@@ -56,7 +56,7 @@ class BookingRepository
 
         $this->populate($booking, $dto);
 
-        if ($this->isAvailableBooking($dto)) {
+        if (self::isAvailableBooking($dto->getCarId(), $dto->getBookFrom(), $dto->getBookTo())) {
             $booking->save();
         } else {
             throw new BookingException();
@@ -79,7 +79,7 @@ class BookingRepository
 
         $this->populate($booking, $dto);
 
-        if ($this->isAvailableBooking($dto)) {
+        if (self::isAvailableBooking($dto->getCarId(), $dto->getBookFrom(), $dto->getBookTo())) {
             $booking->save();
         } else {
             throw new BookingException();
@@ -107,15 +107,14 @@ class BookingRepository
     /**
      * Проверка занятого автомобиля в заданном периоде времени
      *
-     * @param BookingDTOInterface $dto
+     * @param int $car_id
+     * @param Carbon $from
+     * @param Carbon $to
      * @return bool
      */
-    protected function isAvailableBooking(BookingDTOInterface $dto): bool
+    public static function isAvailableBooking(int $car_id, Carbon $from, Carbon $to): bool
     {
-        $from = $dto->getBookFrom();
-        $to = $dto->getBookTo();
-
-        $bookings = Booking::where('car_id', $dto->getCarId())
+        $bookings = Booking::where('car_id', $car_id)
             ->where(function ($query) use ($from, $to) {
                 $query->whereBetween('book_from', [$from, $to])
                     ->orWhereBetween('book_to', [$from, $to])
