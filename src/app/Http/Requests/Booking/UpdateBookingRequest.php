@@ -18,6 +18,7 @@ class UpdateBookingRequest extends FormRequest
     {
         return [
             'car_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('cars', 'id')],
+            'employee_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('employees', 'id')],
             'book_from' => ['required', 'date', 'after:' . now(), 'date_format:Y-m-d H:i:s'],
             'book_to' => ['required', 'date', 'after:book_from', 'date_format:Y-m-d H:i:s'],
         ];
@@ -29,6 +30,7 @@ class UpdateBookingRequest extends FormRequest
 
         $dto = new UpdateBookingDTO();
         $dto->setCarId((int)$result['car_id']);
+        $dto->setEmployeeId((int)$result['employee_id']);
         $dto->setBookFrom(Carbon::make($result['book_from']));
         $dto->setBookTo(Carbon::make($result['book_to']));
 

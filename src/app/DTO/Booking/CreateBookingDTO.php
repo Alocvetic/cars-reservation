@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 class CreateBookingDTO implements BookingDTOInterface
 {
     public int $car_id;
+    public int $employee_id;
     public ?Carbon $book_from = null;
     public ?Carbon $book_to = null;
 
@@ -19,6 +20,16 @@ class CreateBookingDTO implements BookingDTOInterface
     public function setCarId(int $car_id): void
     {
         $this->car_id = $car_id;
+    }
+
+    public function getEmployeeId(): int
+    {
+        return $this->employee_id;
+    }
+
+    public function setEmployeeId(int $employee_id): void
+    {
+        $this->employee_id = $employee_id;
     }
 
     public function getBookFrom(): ?Carbon

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Car;
+use App\Models\Employee;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,6 +12,7 @@ return new class extends Migration {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Car::class);
+            $table->foreignIdFor(Employee::class);
             $table->timestamp('book_from')->nullable();
             $table->timestamp('book_to')->nullable();
             $table->timestamps();

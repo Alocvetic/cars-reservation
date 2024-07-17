@@ -3,11 +3,10 @@
 namespace App\Repositories;
 
 use App\Contracts\BookingDTOInterface;
-use App\Exceptions\BookingException;
 use App\DTO\Booking\{CreateBookingDTO, UpdateBookingDTO};
+use App\Exceptions\BookingException;
 use App\Models\Booking;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 
 class BookingRepository
 {
@@ -98,6 +97,7 @@ class BookingRepository
     protected function populate(Booking $booking, BookingDTOInterface $dto): Booking
     {
         $booking->car_id = $dto->getCarId();
+        $booking->employee_id = $dto->getEmployeeId();
         $booking->book_from = $dto->getBookFrom();
         $booking->book_to = $dto->getBookTo();
 

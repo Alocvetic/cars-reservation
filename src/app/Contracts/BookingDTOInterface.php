@@ -10,6 +10,10 @@ interface BookingDTOInterface
 
     public function setCarId(int $car_id): void;
 
+    public function getEmployeeId(): int;
+
+    public function setEmployeeId(int $employee_id): void;
+
     public function getBookFrom(): ?Carbon;
 
     public function setBookFrom(?Carbon $book_from): void;

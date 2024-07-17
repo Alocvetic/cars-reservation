@@ -15,6 +15,7 @@ class BookingSeeder extends Seeder
         foreach ($bookings as $booking) {
             Booking::factory()
                 ->setCarId($booking['car_id'])
+                ->setEmployeeId($booking['employee_id'])
                 ->setBookFrom($booking['book_from'])
                 ->setBookTo($booking['book_to'])
                 ->create();
