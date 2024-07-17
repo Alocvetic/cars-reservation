@@ -24,4 +24,9 @@ class ComfortCar extends Model
     {
         return $this->belongsToMany(Car::class);
     }
+
+    public function positions(): BelongsToMany
+    {
+        return $this->belongsToMany(Position::class, 'comfort_car_position', 'comfort_car_id', 'position_id');
+    }
 }
