@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Contracts\CarDTOInterface;
+use App\Contracts\DTO\CarDTOInterface;
 use App\DTO\Car\{CreateCarDTO, UpdateCarDTO};
 use App\Filters\CarFilter;
 use App\Http\Requests\Car\GetCarFilterRequest;

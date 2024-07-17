@@ -2,7 +2,7 @@
 
 namespace App\DTO\Booking;
 
-use App\Contracts\BookingDTOInterface;
+use App\Contracts\DTO\BookingDTOInterface;
 use Illuminate\Support\Carbon;
 
 class CreateBookingDTO implements BookingDTOInterface

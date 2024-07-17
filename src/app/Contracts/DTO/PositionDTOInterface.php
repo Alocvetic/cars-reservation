@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Contracts\DTO;
 
-interface DriverDTOInterface
+interface PositionDTOInterface
 {
     public function getTitle(): string;
 

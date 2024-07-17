@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Contracts\ComfortCarDTOInterface;
+use App\Contracts\DTO\ComfortCarDTOInterface;
 use App\DTO\ComfortCar\{CreateComfortCarDTO, UpdateComfortCarDTO};
 use App\Models\{ComfortCar};
 use Illuminate\Database\Eloquent\Collection;

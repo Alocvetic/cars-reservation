@@ -2,7 +2,7 @@
 
 namespace App\DTO\Position;
 
-use App\Contracts\PositionDTOInterface;
+use App\Contracts\DTO\PositionDTOInterface;
 
 class UpdatePositionDTO implements PositionDTOInterface
 {

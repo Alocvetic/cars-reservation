@@ -2,7 +2,7 @@
 
 namespace App\DTO\Car;
 
-use App\Contracts\CarDTOInterface;
+use App\Contracts\DTO\CarDTOInterface;
 
 class CreateCarDTO implements CarDTOInterface
 {

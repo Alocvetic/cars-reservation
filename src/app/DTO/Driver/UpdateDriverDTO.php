@@ -2,7 +2,7 @@
 
 namespace App\DTO\Driver;
 
-use App\Contracts\DriverDTOInterface;
+use App\Contracts\DTO\DriverDTOInterface;
 
 class UpdateDriverDTO implements DriverDTOInterface
 {

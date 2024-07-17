@@ -2,7 +2,7 @@
 
 namespace App\DTO\ComfortCar;
 
-use App\Contracts\ComfortCarDTOInterface;
+use App\Contracts\DTO\ComfortCarDTOInterface;
 
 class UpdateComfortCarDTO implements ComfortCarDTOInterface
 {

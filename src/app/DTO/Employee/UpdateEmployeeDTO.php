@@ -2,7 +2,7 @@
 
 namespace App\DTO\Employee;
 
-use App\Contracts\EmployeeDTOInterface;
+use App\Contracts\DTO\EmployeeDTOInterface;
 
 class UpdateEmployeeDTO implements EmployeeDTOInterface
 {

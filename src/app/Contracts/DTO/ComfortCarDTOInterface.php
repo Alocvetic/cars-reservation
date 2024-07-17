@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Contracts\DTO;
 
-interface PositionDTOInterface
+interface ComfortCarDTOInterface
 {
     public function getTitle(): string;
 

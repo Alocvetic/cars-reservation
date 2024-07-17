@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Contracts\BookingDTOInterface;
+use App\Contracts\DTO\BookingDTOInterface;
 use App\DTO\Booking\{CreateBookingDTO, UpdateBookingDTO};
 use App\Exceptions\BookingException;
 use App\Filters\BookingFilter;
