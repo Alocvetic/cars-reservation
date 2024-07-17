@@ -43,6 +43,10 @@ class Handler extends ExceptionHandler
                 $status = 422;
                 $data = [];
                 $message = 'Значение ' .key($request->toArray()). ' уже существует';
+            } elseif ($e instanceof AbstractApiException) {
+                $status = 422;
+                $data = [];
+                $message = $e->getMessage();
             }
 
             return ResponseApi::json(

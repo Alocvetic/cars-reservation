@@ -3,9 +3,11 @@
 namespace App\Repositories;
 
 use App\Contracts\BookingDTOInterface;
+use App\Exceptions\BookingException;
 use App\DTO\Booking\{CreateBookingDTO, UpdateBookingDTO};
 use App\Models\Booking;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class BookingRepository
 {
@@ -46,13 +48,19 @@ class BookingRepository
      *
      * @param CreateBookingDTO $dto
      * @return int
+     * @throws BookingException
      */
     public function create(CreateBookingDTO $dto): int
     {
         $booking = new Booking();
 
         $this->populate($booking, $dto);
-        $booking->save();
+
+        if ($this->isAvailableBooking($dto)) {
+            $booking->save();
+        } else {
+            throw new BookingException();
+        }
 
         return $booking->id;
     }
@@ -63,13 +71,19 @@ class BookingRepository
      * @param int $id
      * @param UpdateBookingDTO $dto
      * @return int
+     * @throws BookingException
      */
     public function update(int $id, UpdateBookingDTO $dto): int
     {
         $booking = Booking::where('id', $id)->first();
 
         $this->populate($booking, $dto);
-        $booking->save();
+
+        if ($this->isAvailableBooking($dto)) {
+            $booking->save();
+        } else {
+            throw new BookingException();
+        }
 
         return $booking->id;
     }
@@ -88,6 +102,31 @@ class BookingRepository
         $booking->book_to = $dto->getBookTo();
 
         return $booking;
+    }
+
+    /**
+     * Проверка занятого автомобиля в заданном периоде времени
+     *
+     * @param BookingDTOInterface $dto
+     * @return bool
+     */
+    protected function isAvailableBooking(BookingDTOInterface $dto): bool
+    {
+        $from = $dto->getBookFrom();
+        $to = $dto->getBookTo();
+
+        $bookings = Booking::where('car_id', $dto->getCarId())
+            ->where(function ($query) use ($from, $to) {
+                $query->whereBetween('book_from', [$from, $to])
+                    ->orWhereBetween('book_to', [$from, $to])
+                    ->orWhere(function ($q) use ($from, $to) {
+                        $q->where('book_from', '<=', $from)
+                            ->where('book_to', '>=', $to);
+                    });
+            })
+            ->exists();
+
+        return !$bookings;
     }
 
     /**
