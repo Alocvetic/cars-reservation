@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
  * @property int $car_id
- * @property Carbon $book_from
- * @property Carbon $book_to
+ * @property string $book_from
+ * @property string $book_to
  */
 class Booking extends Model
 {
@@ -21,4 +21,9 @@ class Booking extends Model
         'book_from',
         'book_to',
     ];
+
+    public function car(): BelongsTo
+    {
+        return $this->belongsTo(Car::class);
+    }
 }
