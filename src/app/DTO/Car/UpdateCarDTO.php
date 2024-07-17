@@ -11,7 +11,6 @@ class UpdateCarDTO implements CarDTOInterface
     public int $comfort_car_id;
     public int $driver_id;
     public bool $is_access = true;
-    public bool $is_booked = false;
 
     public function getRegisterNumber(): string
     {
@@ -61,15 +60,5 @@ class UpdateCarDTO implements CarDTOInterface
     public function setIsAccess(bool $is_access): void
     {
         $this->is_access = $is_access;
-    }
-
-    public function isBooked(): bool
-    {
-        return $this->is_booked;
-    }
-
-    public function setIsBooked(bool $is_booked): void
-    {
-        $this->is_booked = $is_booked;
     }
 }
