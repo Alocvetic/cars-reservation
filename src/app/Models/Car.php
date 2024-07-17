@@ -19,7 +19,16 @@ class Car extends Model
 {
     use HasFactory;
 
-    public const COUNT_FACTORY = 9;
+    public const DEF_COUNT = 9;
+    public const DEF_MODELS = [
+        'Toyota Corolla',
+        'Lada Vesta',
+        'Skoda Octavia',
+        'Nissan Sunny',
+        'Renault Sandero',
+        'kia Niro',
+        'Aurus Senat',
+    ];
 
     protected $fillable = [
         'register_number',

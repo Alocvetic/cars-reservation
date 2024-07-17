@@ -2,6 +2,7 @@
 
 return [
     'required' => 'Поле :attribute обязательно для заполнения.',
+    'boolean' => 'Поле :attribute должно быть истиной или ложью.',
     'integer' => 'Поле :attribute должно быть целым числом.',
     'string' => 'Поле :attribute должно быть строкой.',
     'regex' => 'Поле :attribute имеет ошибочный формат.',

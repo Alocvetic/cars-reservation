@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\{ComfortCar, Position};
+use App\Services\CollectionService;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Collection;
 
 class PositionSeeder extends Seeder
 {
@@ -12,31 +12,18 @@ class PositionSeeder extends Seeder
     {
         $comfortCars = ComfortCar::all()->pluck('id');
 
-        for ($i = 0; $i < Position::COUNT_FACTORY; $i++) {
-            $position = Position::factory()->create();
+        for ($i = 0; $i < Position::DEF_COUNT; $i++) {
+            $position = Position::factory()
+                ->setTitle(Position::DEF_VALUES[$i])
+                ->create();
 
-            $randomComfortCars = $this->getRandomCollection($comfortCars, random_int(1, ComfortCar::COUNT_FACTORY));
+            $randomComfortCars = CollectionService::getRandom(
+                collection: $comfortCars,
+                count: random_int(1, ComfortCar::DEF_COUNT));
+
             $position->comfortCars()->sync($randomComfortCars);
         }
     }
 
-    /**
-     * Получение рандомных записей
-     *
-     * @param Collection $collection
-     * @param int $count
-     * @return array
-     */
-    protected function getRandomCollection(Collection $collection, int $count): array
-    {
-        $result = [];
-        while (count($result) < $count) {
-            $item = $collection->random();
-            if (!in_array($item, $result)) {
-                $result[] = $item;
-            }
-        }
 
-        return $result;
-    }
 }

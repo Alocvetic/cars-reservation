@@ -11,7 +11,7 @@ class EmployeeFactory extends Factory
     {
         return [
             'title' => fake()->name,
-            'position_id' => random_int(1, Position::COUNT_FACTORY)
+            'position_id' => random_int(1, Position::DEF_COUNT)
         ];
     }
 }

@@ -13,7 +13,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(ComfortCar::class);
             $table->foreignIdFor(Position::class);
-            $table->timestamps();
         });
     }
 

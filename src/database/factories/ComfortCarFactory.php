@@ -6,10 +6,19 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ComfortCarFactory extends Factory
 {
+    protected string $title;
+
+    public function setTitle(string $title): static
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
     public function definition(): array
     {
         return [
-            'title' => fake()->unique()->word(),
+            'title' => $this->title,
         ];
     }
 }
