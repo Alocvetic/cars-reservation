@@ -3,10 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\PositionDTOInterface;
-use App\DTO\Position\{
-    CreatePositionDTO,
-    UpdatePositionDTO
-};
+use App\DTO\Position\{CreatePositionDTO, UpdatePositionDTO};
 use App\Models\Position;
 use Illuminate\Database\Eloquent\Collection;
 

@@ -3,20 +3,32 @@
 namespace App\Repositories;
 
 use App\Contracts\CarDTOInterface;
-use App\DTO\Car\CreateCarDTO;
-use App\DTO\Car\UpdateCarDTO;
+use App\DTO\Car\{CreateCarDTO, UpdateCarDTO};
+use App\Filters\CarFilter;
+use App\Http\Requests\Car\GetCarFilterRequest;
 use App\Models\Car;
 use Illuminate\Database\Eloquent\Collection;
 
 class CarRepository
 {
+    public function __construct(
+        protected CarFilter $filter,
+    ) {
+    }
+
     /**
      * Получение всех записей Car
      *
+     * @param GetCarFilterRequest $request
      * @return Collection
      */
-    public function getAll(): Collection
+    public function getAll(GetCarFilterRequest $request): Collection
     {
+        if (!empty($request->query())) {
+            $query = $this->filter->buildQuery($request);
+            return $query->get();
+        }
+
         return Car::all();
     }
 
