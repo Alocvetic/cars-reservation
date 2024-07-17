@@ -17,4 +17,7 @@ return [
         'integer' => 'Поле :attribute должно быть не менее :min.',
         'string' => 'Поле :attribute должно быть не короче :min символов.',
     ],
+    'date' => 'Поле :attribute не является датой.',
+    'date_format' => 'Поле :attribute не соответствует формату :format.',
+    'after' => 'Поле :attribute должно быть датой после :date.',
 ];

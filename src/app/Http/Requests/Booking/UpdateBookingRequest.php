@@ -23,15 +23,6 @@ class UpdateBookingRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-            '*.date' => 'Поле :attribute не является датой.',
-            '*.date_format' => 'Поле :attribute не соответствует формату :format.',
-            '*.after' => 'Поле :attribute должно быть датой после :date.',
-        ];
-    }
-
     public function toDto(): UpdateBookingDTO
     {
         $result = $this->validated();
