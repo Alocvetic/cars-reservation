@@ -27,7 +27,7 @@ class UpdateCarRequest extends FormRequest
             'model' => ['required', 'string', 'min:2', 'max:255'],
             'driver_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('drivers', 'id')],
             'comfort_car_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('comfort_cars', 'id')],
-            'booking' => ['string|nullable'],
+            'is_access' => ['required', 'boolean'],
         ];
     }
 
@@ -52,8 +52,8 @@ class UpdateCarRequest extends FormRequest
             'comfort_car_id.min' => 'Длина не менее :min символов',
             'comfort_car_id.max' => 'Длина не более :min символов',
             'comfort_car_id.exists' => 'Выберите существующий комфорт',
-            'booking.string' => 'Должна быть строка json|null',
-            'booking.nullable' => 'Должна быть строка json|null',
+            'is_access.required' => 'Заполните поле',
+            'is_access.boolean' => 'Должно быть true|false',
         ];
     }
 
@@ -66,9 +66,7 @@ class UpdateCarRequest extends FormRequest
         $dto->setModel($result['model']);
         $dto->setDriverId((int)$result['driver_id']);
         $dto->setComfortCarId((int)$result['comfort_car_id']);
-        if (isset($result['booking'])) {
-            $dto->setBookingJson($result['booking']);
-        }
+        $dto->setIsAccess((bool)$result['is_access']);
 
         return $dto;
     }
