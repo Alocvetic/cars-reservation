@@ -7,9 +7,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-require_once 'Api/comfortCar.php';
-require_once 'Api/driver.php';
-require_once 'Api/position.php';
-require_once 'Api/employee.php';
-require_once 'Api/car.php';
-require_once 'Api/booking.php';
+require_once 'apiRoutes/comfortCar.php';
+require_once 'apiRoutes/driver.php';
+require_once 'apiRoutes/position.php';
+require_once 'apiRoutes/employee.php';
+require_once 'apiRoutes/car.php';
+require_once 'apiRoutes/booking.php';
