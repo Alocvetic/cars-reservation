@@ -8,7 +8,7 @@ class DbDefData
     public const COUNT_COMFORT = 4;
     public const COUNT_DRIVER = 8;
     public const COUNT_EMPLOYEE = 9;
-    public const COUNT_POSITION = 9;
+    public const COUNT_POSITION = 4 ;
 
     public const COMFORTS = [
         'Эконом',
