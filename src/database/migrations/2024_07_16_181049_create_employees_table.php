@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->foreignIdFor(Position::class);
             $table->timestamps();
 
-            $table->index('title');
+            $table->index('position_id');
         });
     }
 

@@ -15,6 +15,9 @@ return new class extends Migration {
             $table->timestamp('book_from')->nullable();
             $table->timestamp('book_to')->nullable();
             $table->timestamps();
+
+            $table->index('car_id');
+            $table->index('employee_id');
         });
     }
 

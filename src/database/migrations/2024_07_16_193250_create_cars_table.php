@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->boolean('is_access')->default(true);
             $table->timestamps();
 
-            $table->index('register_number');
             $table->index('model');
+            $table->index('comfort_car_id');
         });
     }
 
