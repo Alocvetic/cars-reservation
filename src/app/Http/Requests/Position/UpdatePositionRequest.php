@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Position;
 
 use App\DTO\Position\UpdatePositionDTO;
@@ -18,13 +20,7 @@ class UpdatePositionRequest extends FormRequest
         $id = $this->route('id');
 
         return [
-            'title' => [
-                'required',
-                'string',
-                'min:2',
-                'max:255',
-                Rule::unique('positions', 'title')->ignore($id, 'id')
-            ],
+            'title' => ['required', 'string', 'min:2', 'max:255', Rule::unique('positions', 'title')->ignore($id, 'id')],
         ];
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Car;
 
 use App\DTO\Car\UpdateCarDTO;
@@ -18,12 +20,7 @@ class UpdateCarRequest extends FormRequest
         $id = $this->route('id');
 
         return [
-            'register_number' => [
-                'required',
-                'string',
-                'regex:/^[A-Z]{1}[0-9]{3}[A-Z]{2}$/',
-                Rule::unique('cars', 'register_number')->ignore($id, 'id')
-            ],
+            'register_number' => ['required', 'string', 'regex:/^[A-Z]{1}[0-9]{3}[A-Z]{2}$/', Rule::unique('cars', 'register_number')->ignore($id, 'id')],
             'model' => ['required', 'string', 'min:2', 'max:255'],
             'driver_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('drivers', 'id')],
             'comfort_car_id' => ['required', 'integer', 'min:1', 'max:99999999999', Rule::exists('comfort_cars', 'id')],

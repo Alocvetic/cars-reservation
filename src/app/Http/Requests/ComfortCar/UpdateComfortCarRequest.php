@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\ComfortCar;
 
 use App\DTO\ComfortCar\UpdateComfortCarDTO;
@@ -18,13 +20,7 @@ class UpdateComfortCarRequest extends FormRequest
         $id = $this->route('id');
 
         return [
-            'title' => [
-                'required',
-                'string',
-                'min:2',
-                'max:255',
-                Rule::unique('comfort_cars', 'title')->ignore($id, 'id')
-            ],
+            'title' => ['required', 'string', 'min:2', 'max:255', Rule::unique('comfort_cars', 'title')->ignore($id, 'id')],
         ];
     }
 
