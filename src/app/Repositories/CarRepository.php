@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repositories;
 
 use App\Contracts\DTO\CarDTOInterface;
-use App\DTO\Car\{CreateCarDTO, UpdateCarDTO};
+use App\DTO\Car\{CreateCarDTO, GetCarFilterDTO, UpdateCarDTO};
 use App\Filters\CarFilter;
-use App\Http\Requests\Car\GetCarFilterRequest;
 use App\Models\Car;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -19,13 +20,13 @@ class CarRepository
     /**
      * Получение всех записей Car
      *
-     * @param GetCarFilterRequest $request
+     * @param GetCarFilterDTO $dto
      * @return Collection
      */
-    public function getAll(GetCarFilterRequest $request): Collection
+    public function getAll(GetCarFilterDTO $dto): Collection
     {
-        if (!empty($request->query())) {
-            $query = $this->filter->buildQuery($request);
+        if (!empty($dto->allData())) {
+            $query = $this->filter->buildQuery($dto);
             return $query->get();
         }
 

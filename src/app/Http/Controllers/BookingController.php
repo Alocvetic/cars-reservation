@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Booking\{CreateBookingRequest, GetBookingFilterRequest, UpdateBookingRequest};
@@ -16,7 +18,8 @@ class BookingController extends Controller
 
     public function index(GetBookingFilterRequest $request): JsonResponse
     {
-        $data = $this->repository->getAll($request);
+        $dto = $request->toDto();
+        $data = $this->repository->getAll($dto);
 
         return ResponseApi::json($data->toArray());
     }

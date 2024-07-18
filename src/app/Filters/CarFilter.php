@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filters;
 
-use App\Http\Requests\Car\GetCarFilterRequest;
+use App\DTO\Car\GetCarFilterDTO;
 use App\Models\Car;
 use App\Repositories\{BookingRepository, ComfortCarRepository};
 use Carbon\Carbon;
@@ -10,18 +12,19 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CarFilter
 {
+    protected array $dtoArray = [];
+
     public function __construct(
-        protected GetCarFilterRequest $request,
         protected Builder $query,
     ) {
         $this->query = Car::query();
     }
 
-    public function buildQuery(GetCarFilterRequest $request): Builder
+    public function buildQuery(GetCarFilterDTO $dto): Builder
     {
-        $this->request = $request;
+        $this->dtoArray = $dto->allData();
 
-        if ($request->has('filter')) {
+        if (isset($this->dtoArray['filter'])) {
             $this->filter();
         }
 
@@ -30,7 +33,7 @@ class CarFilter
             ->join('comfort_cars', 'cars.comfort_car_id', '=', 'comfort_cars.id')
             ->select('cars.register_number', 'cars.model', 'comfort_cars.title as comfort');
 
-        if ($request->has('sort')) {
+        if (isset($this->dtoArray['sort'])) {
             $this->sort();
         }
 
@@ -44,7 +47,7 @@ class CarFilter
      */
     protected function filter(): void
     {
-        $filters = $this->request->input('filter');
+        $filters = $this->dtoArray['filter'];
 
         // filter by employee
         if (isset($filters['employee_id'])) {
@@ -100,7 +103,7 @@ class CarFilter
      */
     protected function sort(): void
     {
-        $sortParams = explode(',', $this->request->input('sort'));
+        $sortParams = explode(',', $this->dtoArray['sort']);
 
         foreach ($sortParams as $sort) {
             if ($sort[0] === '-') {

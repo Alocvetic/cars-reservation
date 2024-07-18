@@ -1,25 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filters;
 
-use App\Http\Requests\Booking\GetBookingFilterRequest;
+use App\DTO\Booking\GetBookingFilterDTO;
 use App\Models\Booking;
 use Illuminate\Database\Eloquent\Builder;
 
 class BookingFilter
 {
+    protected array $dtoArray = [];
+
     public function __construct(
-        protected GetBookingFilterRequest $request,
         protected Builder $query,
     ) {
         $this->query = Booking::query();
     }
 
-    public function buildQuery(GetBookingFilterRequest $request): Builder
+    public function buildQuery(GetBookingFilterDTO $dto): Builder
     {
-        $this->request = $request;
+        $this->dtoArray = $dto->allData();
 
-        if ($request->has('filter')) {
+        if (isset($this->dtoArray['filter'])) {
             $this->filter();
         }
 
@@ -33,7 +36,7 @@ class BookingFilter
      */
     protected function filter(): void
     {
-        $filters = $this->request->input('filter');
+        $filters = $this->dtoArray['filter'];
 
         // filter by employee
         if (isset($filters['employee_id'])) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Car\{CreateCarRequest, GetCarFilterRequest, UpdateCarRequest};
@@ -16,7 +18,8 @@ class CarController extends Controller
 
     public function index(GetCarFilterRequest $request): JsonResponse
     {
-        $data = $this->repository->getAll($request);
+        $dto = $request->toDto();
+        $data = $this->repository->getAll($dto);
 
         return ResponseApi::json($data->toArray());
     }
