@@ -15,8 +15,6 @@ class Employee extends Model
 {
     use HasFactory;
 
-    public const DEF_COUNT = 10;
-
     protected $fillable = [
         'title',
         'position_id'

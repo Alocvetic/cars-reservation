@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Models\{Car, Employee};
+use Database\DbDefData;
 
 class BookingService
 {
     public static function getDefList(): array
     {
-        $countCars = Car::DEF_COUNT;
-        $countEmployees = Employee::DEF_COUNT;
+        $countCars = DbDefData::COUNT_CAR;
+        $countEmployees = DbDefData::COUNT_EMPLOYEE;
         $now = now();
 
         return [

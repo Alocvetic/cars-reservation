@@ -14,14 +14,6 @@ class Position extends Model
 {
     use HasFactory;
 
-    public const DEF_COUNT = 4;
-    public const DEF_VALUES = [
-        'Менеджер',
-        'Директор',
-        'Руководитель',
-        'Певец',
-    ];
-
     protected $fillable = [
         'title'
     ];

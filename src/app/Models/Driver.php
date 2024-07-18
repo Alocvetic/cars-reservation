@@ -14,8 +14,6 @@ class Driver extends Model
 {
     use HasFactory;
 
-    public const DEF_COUNT = 8;
-
     protected $fillable = [
         'title'
     ];

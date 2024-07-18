@@ -2,8 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\ComfortCar;
-use App\Models\Driver;
+use Database\DbDefData;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CarFactory extends Factory
@@ -22,8 +21,8 @@ class CarFactory extends Factory
         return [
             'register_number' => fake()->unique()->regexify('[A-Z]{1}[0-9]{3}[A-Z]{2}'),
             'model' => $this->carModel,
-            'comfort_car_id' => random_int(1, ComfortCar::DEF_COUNT),
-            'driver_id' => random_int(1, Driver::DEF_COUNT),
+            'comfort_car_id' => random_int(1, DbDefData::COUNT_COMFORT),
+            'driver_id' => random_int(1, DbDefData::COUNT_DRIVER),
         ];
     }
 }

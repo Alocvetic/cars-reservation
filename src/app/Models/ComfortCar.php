@@ -14,14 +14,6 @@ class ComfortCar extends Model
 {
     use HasFactory;
 
-    public const DEF_COUNT = 4;
-    public const DEF_VALUES = [
-        'Эконом',
-        'Комфорт',
-        'Бизнес',
-        'Премиум',
-    ];
-
     protected $fillable = [
         'title'
     ];

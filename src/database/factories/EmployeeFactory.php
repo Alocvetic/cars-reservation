@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Position;
+use Database\DbDefData;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
@@ -11,7 +11,7 @@ class EmployeeFactory extends Factory
     {
         return [
             'title' => fake()->name,
-            'position_id' => random_int(1, Position::DEF_COUNT)
+            'position_id' => random_int(1, DbDefData::COUNT_POSITION)
         ];
     }
 }
