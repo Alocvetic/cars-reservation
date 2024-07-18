@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DTO\Driver;
 
 use App\Contracts\DTO\DriverDTOInterface;

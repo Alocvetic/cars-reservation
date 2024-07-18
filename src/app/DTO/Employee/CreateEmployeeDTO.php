@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DTO\Employee;
 
 use App\Contracts\DTO\EmployeeDTOInterface;
